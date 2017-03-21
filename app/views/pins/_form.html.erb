@@ -1,27 +1,20 @@
-<%= form_for(pin) do |f| %>
-  <% if pin.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pin.errors.count, "error") %> prohibited this pin from being saved:</h2>
+<%= form_for @pin do |f| %>
+  <p>
+    <%= f.label "Photo" %><br>
+    <%= f.file_field :photo %>
+  </p>
 
-      <ul>
-      <% pin.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
+  <p>
+    <%= f.label "Title :" %><br>
     <%= f.text_field :title %>
-  </div>
+  </p>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
+  <p>
+    <%= f.label "Description :" %><br>
+    <%= f.text_field :description %>
+  </p>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <p>
+    <%= f.submit "Enter" %>
+  </p>
 <% end %>
