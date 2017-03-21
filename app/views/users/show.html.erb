@@ -1,0 +1,9 @@
+<h1>Welcome <%= @user.username %></h1>
+
+<p>Email: <%= @user.email %></p>
+
+<% if @user %>
+<%= link_to "Edit Profile", edit_user_path, class: "button" %>
+<% end %>
+
+<%= link_to "Back", root_path , class: "button"%>

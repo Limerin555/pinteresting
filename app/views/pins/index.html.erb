@@ -1,0 +1,9 @@
+this is root page <br>
+
+<% if current_user %>
+  Signed in as <%= current_user.email %>
+  <%= link_to "Sign out", sign_out_path, class:"button", method: "delete" %>
+<% else %>
+  <%= link_to "Sign In", sign_in_path, class:"button" %>
+  <%= link_to "Sign Up", sign_up_path, class:"button" %>
+<% end %>
