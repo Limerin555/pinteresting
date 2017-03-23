@@ -1,5 +1,6 @@
 <%= form_for @pin do |f| %>
   <p>
+    <%= image_tag (@pin.photo.url) if @pin.photo? %>
     <%= f.label "Photo" %><br>
     <%= f.file_field :photo %>
   </p>

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root :to => "pins#index"
 
+  post "auth/:provider/callback" => "sessions#create"
+  get "auth/failure" => "pins#index"
 
   delete "/sign_out" => "sessions#destroy", :as => "sign_out"
   get "/sign_in" => "sessions#new", :as => "sign_in"

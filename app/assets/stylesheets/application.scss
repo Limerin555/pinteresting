@@ -17,9 +17,18 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "users.scss";
+
+ .alert {
+   margin-bottom: 0;
+ }
 
  body {
  	background: #E9E9E9;
+  margin: 0;
+  padding: 0;
+  max-height: 100%;
+  width: 100%;
  }
 
  h1, h2, h3, h4, h5, h6 {
@@ -39,9 +48,15 @@
  	}
  }
 
+ .navbar {
+   margin-bottom: 0;
+ }
+
  #pins {
+  //  display: -webkit-flex;
+   display: flex;
    margin: 0 auto;
-   width: 100%;
+  //  width: 100%;
    .box {
  	  margin: 10px;
  	  width: 350px;
@@ -84,8 +99,10 @@
  	}
  	.pin_image {
  		img {
- 			max-width: 100%;
- 			width: 100%;
+ 			max-width: 600px;
+ 		// 	width: 100%;
+      max-height: 600px;
+      // height: 100%;
  			display: block;
  			margin: 0 auto;
  		}
@@ -102,7 +119,7 @@
  		}
  	}
  	.panel-footer {
- 		padding: 20px 35px;
+ 		padding: 15px 35px;
  		p {
  			margin: 0;
  		}

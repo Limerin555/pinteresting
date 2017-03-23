@@ -1,17 +1,21 @@
 class PinsController < ApplicationController
   before_action :find_pin, only: [:show, :edit, :update, :destroy, :upvote]
-  before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @pins = Pin.all.order("created_at DESC")
+    if params[:query].present?
+      @pins = Pin.search_full_text(params[:query]).order("created_at DESC")
+    else
+      @pins = Pin.all.order("created_at DESC")
+    end
   end
 
   def new
-    @pin = current_user.pins.build
+    @pin = Pin.new
   end
 
   def create
-    @pin = current_user.pins.build(pin_params)
+    @pin = Pin.new(pin_params)
+    @pin.user_id = current_user.id
 
     if @pin.save
       redirect_to @pin, notice: "Pin posted"

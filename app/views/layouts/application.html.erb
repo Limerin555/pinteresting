@@ -9,36 +9,6 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-brand">
-          <%= link_to "Pinteresting", root_path %>
-        </div>
-        <% if user_signed_in? %>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= link_to "New Pin", new_pin_path %>
-            </li>
-            <li>
-              <%= link_to "User Profile", user_path %>
-            </li>
-            <li>
-              <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-            </li>
-          </ul>
-        <% else %>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= link_to "Sign Up", new_user_registration_path %>
-            </li>
-            <li>
-              <%= link_to "Sign In", new_user_session_path %>
-            </li>
-          </ul>
-        <% end %>
-      </div>
-    </nav>
-
     <div id="flash">
       <% flash.each do |key, msg| %>
         <%= content_tag :div, msg, class: "alert alert-info"%>

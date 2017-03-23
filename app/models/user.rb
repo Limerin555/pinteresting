@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :pins, dependent: :destroy
-  
+  mount_uploader :profpic, ProfpicUploader
+
   attr_accessor :password
   before_save :encrypt_password
 
@@ -26,4 +27,14 @@ class User < ApplicationRecord
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
+
+  # def self.create_with_auth_and_hash(authentication, auth_hash)
+  #   user = User.create!(name: auth_hash["name"], email: auth_hash["extra"]["raw_info"]["email"])
+  #   user.authentications << (authentication)      return user
+  # end
+  #
+  # def fb_token
+  #   x = self.authentications.where(:provider => :facebook).first
+  #   return x.token unless x.nil?
+  # end
 end
