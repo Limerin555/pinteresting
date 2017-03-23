@@ -1,5 +1,6 @@
 class Pin < ApplicationRecord
   belongs_to :user
+  has_many :donations
   mount_uploader :photo, PhotoUploader
 
   include PgSearch
