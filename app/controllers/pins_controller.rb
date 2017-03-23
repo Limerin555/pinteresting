@@ -1,5 +1,6 @@
 class PinsController < ApplicationController
   before_action :find_pin, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :set_auth
 
   def index
     if params[:query].present?
@@ -50,10 +51,14 @@ class PinsController < ApplicationController
 
   private
   def pin_params
-    params.require(:pin).permit(:title, :description, :photo)
+    params.require(:pin).permit(:title, :description, :photo, :donation)
   end
 
   def find_pin
     @pin = Pin.find(params[:id])
+  end
+
+  def set_auth
+    @auth = session[:omniauth] if session[:omniauth]
   end
 end

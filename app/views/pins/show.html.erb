@@ -28,6 +28,15 @@
           Submitted by:
           <%= @pin.user.username %>
         </p>
+        <% unless session[:user_id].nil? %>
+          <% unless @pin.user_id == current_user.id %>
+          <br>
+          <p>
+            Like the work? Support the artist now<br>
+            <%= link_to "Donate $10", new_pin_donation_path(@pin), class: "btn btn-default" %>
+          </p>
+          <% end %>
+        <% end %>
       </div>
       <div class="panel-footer">
         <div class="row">

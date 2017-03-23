@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # @pins = Pin.all.where(id: params[:user_id])
   end
 
   def edit

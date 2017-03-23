@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :pins, dependent: :destroy
+  has_many :donations
   mount_uploader :profpic, ProfpicUploader
 
   attr_accessor :password
@@ -28,13 +29,16 @@ class User < ApplicationRecord
     end
   end
 
-  # def self.create_with_auth_and_hash(authentication, auth_hash)
-  #   user = User.create!(name: auth_hash["name"], email: auth_hash["extra"]["raw_info"]["email"])
-  #   user.authentications << (authentication)      return user
+  # def self.sign_in_from_omniauth(auth)
+  #   find_by(provider: auth['provider'], uid: auth[:id]) || create_user_from_omniauth(auth)
   # end
   #
-  # def fb_token
-  #   x = self.authentications.where(:provider => :facebook).first
-  #   return x.token unless x.nil?
+  # def self.create_user_from_omniauth(auth)
+  #   create (
+  #           provider: auth['provider'],
+  #           uid: auth['uid'],
+  #           name: auth['info']['name']
+  #   )
   # end
+
 end
