@@ -1,5 +1,16 @@
-<h1>New Pin</h1>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-brand">
+      <%= link_to "Pinteresting", root_path %>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= link_to 'Back', root_path %>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<%= render 'form', pin: @pin %>
+<h1>Create New Pins</h1>
 
-<%= link_to 'Back', pins_path %>
+<%= render 'form' %>

@@ -1,14 +1,51 @@
-<p id="notice"><%= notice %></p>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-brand">
+      <%= link_to "Pinteresting", root_path %>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= link_to "New Pin", new_pin_path %>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<p>
-  <strong>Title:</strong>
-  <%= @pin.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @pin.description %>
-</p>
-
-<%= link_to 'Edit', edit_pin_path(@pin) %> |
-<%= link_to 'Back', pins_path %>
+<div class="row" id="pin_show">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default" style=" margin-left: auto; margin-right: auto; margin-top: 20px; margin-bottom: 20px;">
+      <div class="panel-heading pin_image">
+        <%= image_tag @pin.photo %>
+      </div>
+      <div class="panel-body">
+        <h1>
+          <%= @pin.title %>
+        </h1>
+        <p class="description">
+          <%= @pin.description %>
+        </p>
+        <p>
+          Submitted by:
+          <%= @pin.user.username %>
+        </p>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6">
+            <div class="btn-group pull-right">
+              <% unless session[:user_id].nil? %>
+                <% if @pin.user_id == current_user.id %>
+                  <%= link_to "Edit", edit_pin_path, class: "btn btn-default" %>
+                  <%= link_to "Delete", pin_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
+                <% end %>
+              <% end %>
+              <%= link_to "Back", root_path, class: "btn btn-default" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

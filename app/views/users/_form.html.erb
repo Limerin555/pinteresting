@@ -1,0 +1,22 @@
+<%= form_for @user do |f| %>
+  <p>
+    <%= image_tag (@user.profpic.url) if @user.profpic? %>
+    <%= f.label "Profile Picture" %><br>
+    <%= f.file_field :profpic %>
+  </p>
+
+  <p>
+    <%= f.label "Username: " %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label "Email: " %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label "Password: " %><br />
+    <%= f.password_field :password %>
+  </p>
+
+  <p class="button"><%= f.submit "Enter" %></p>
+<% end %>

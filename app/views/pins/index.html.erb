@@ -1,9 +1,64 @@
-this is root page <br>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-brand">
+      <%= link_to "Pinteresting", root_path %>
+    </div>
+    <% if current_user %>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to "New Pin", new_pin_path %>
+        </li>
+        <li>
+          <%= link_to "User Profile", user_path(current_user) %>
+        </li>
+        <li>
+          <%= link_to "Sign Out", sign_out_path, method: :delete %>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to "Sign Up", sign_up_path %>
+        </li>
+        <li>
+          <%= link_to "Sign In", sign_in_path %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</nav>
 
 <% if current_user %>
-  Signed in as <%= current_user.email %>
-  <%= link_to "Sign out", sign_out_path, class:"button", method: "delete" %>
+<h1 style="margin: 50px auto 40px; text-align:center;">Welcome to Pinteresting, <%= current_user.username %>.</h1>
 <% else %>
-  <%= link_to "Sign In", sign_in_path, class:"button" %>
-  <%= link_to "Sign Up", sign_up_path, class:"button" %>
+<h1 style="margin: 50px auto 40px; text-align:center;">Welcome to Pinteresting</h1>
 <% end %>
+
+<div class="search-form" style="text-align:center; margin-bottom:10px;">
+  <%= form_tag pins_path, method: :get do %>
+    <p>
+      <%= text_field_tag :query, params[:query], placeholder: "Look for a place" %>
+      <%= submit_tag "Search", title: nil, description: nil %>
+    </p>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="transistions-enabled" id="pins" style="margin-left: 60px; margin-right: 60px;">
+      <% @pins.each do |pin| %>
+      <div class="box panel panel-default" style="width:600px; height:100%; margin-left:5px; margin-right:5px;">
+        <%= link_to (image_tag pin.photo), pin %>
+        <div class="panel-body">
+          <h2>
+            <%= link_to pin.title, pin %>
+          </h2>
+          <p class="user"></p>
+          Submitted by:
+          <%= pin.user.username %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

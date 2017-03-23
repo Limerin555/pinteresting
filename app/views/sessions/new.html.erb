@@ -1,3 +1,19 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-brand">
+      <%= link_to "Pinteresting", root_path %>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= link_to "Back to Main", root_path %>
+        <% unless session[:user_id].nil? %>
+        <%= link_to "Sign out", sign_out_path, class: "button", method: "delete" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <%= form_tag sign_in_path do %>
 <p>
   <%= label_tag "Email: " %><br />
@@ -9,6 +25,3 @@
 </p>
 <p class="button"><%= submit_tag "Sign In" %></p>
 <% end %>
-
-
-<%= link_to "Sign out", sign_out_path, class: "button", method: "delete" %>
