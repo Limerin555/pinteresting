@@ -1,3 +1,2 @@
-# $(document).on('click', '#search-link', ( ->
-#   $("#search-section").toggle(1000);
-# ));
+# $("#search-link").on "click",->
+#   "#search-section".toggle()
