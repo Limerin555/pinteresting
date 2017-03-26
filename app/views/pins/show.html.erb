@@ -38,23 +38,6 @@
           <% end %>
         <% end %>
       </div>
-      <div class="panel-footer">
-        <div class="row">
-          <div class="col-md-6">
-          </div>
-          <div class="col-md-6">
-            <div class="btn-group pull-right">
-              <% unless session[:user_id].nil? %>
-                <% if @pin.user_id == current_user.id %>
-                  <%= link_to "Edit", edit_pin_path, class: "btn btn-default" %>
-                  <%= link_to "Delete", pin_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
-                <% end %>
-              <% end %>
-              <%= link_to "Back", root_path, class: "btn btn-default" %>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

@@ -24,10 +24,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(@user), notice: "Signed in"
     else
       @user = User.create_with_auth_and_hash(authentication, auth_hash)
-      # session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "User Profile created"
-    # else
-      # redirect_to root_path, notice: "Something went wrong, please try again."
     end
   end
 

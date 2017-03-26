@@ -16,3 +16,16 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+
+// $(document).ready(function(){
+//   $('.destroy').on('click', function(){
+//     $.ajax({
+//       url: '/pins/' + this.parentElement.id,
+//       type: 'DELETE',
+//       success: function(r){
+//
+//       }
+//     });
+//   });
+// });
