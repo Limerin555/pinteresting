@@ -11,4 +11,15 @@
   </div>
 </nav>
 
-<%= render 'form' %>
+<div id="signup-box">
+  <%= form_for @user, id: "signup", url: users_path do |f| %>
+      <%= image_tag (@user.profpic.url) if @user.profpic? %>
+      <%= f.file_field :profpic%>
+
+      <%= f.text_field :username, placeholder: "Username", type: "username", class: "input pass", style: "border-bottom: 2px solid #ebebeb;" %>
+      <%= f.email_field :email, placeholder: "Email", type: "email", class: "input pass", style: "border-bottom: 2px solid #ebebeb;" %>
+      <%= f.password_field :password, placeholder: "Password", type: "password", class: "input pass", style: "border-bottom: 2px solid #ebebeb;" %>
+
+    <%= f.submit "Enter", class: "inputButton" %>
+  <% end %>
+</div>

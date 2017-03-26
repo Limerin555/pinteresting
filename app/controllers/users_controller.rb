@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @pins = Pin.all.where(id: params[:user_id])
   end
 
   def edit

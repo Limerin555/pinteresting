@@ -1,0 +1,13 @@
+<!-- $(document).on("click", "a.toggle-formed", function () {
+    $("div#sample").hide();
+} else {
+    $("div#sample").show();
+}); -->
+
+
+<%= form_tag pins_path, method: :get do %>
+<p>
+  <center><%= text_field_tag :query, params[:query], placeholder: "Look for a place" %>
+  <%= submit_tag "Search", title: nil, description: nil %></center>
+</p>
+<% end %><br>

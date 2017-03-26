@@ -12,7 +12,7 @@
           <%= link_to "User Profile", user_path(current_user) %>
         </li>
         <li>
-          <%= link_to "Sign Out", sign_out_path, method: :delete %>
+          <%= link_to "Sign Out", sign_out_path, method: "delete" %>
         </li>
       </ul>
     <% else %>
@@ -23,10 +23,14 @@
         <li>
           <%= link_to "Sign In", sign_in_path %>
         </li>
+        <li>
+          <%= link_to "Sign In with Facebook", "/auth/facebook" %>
+        </li>
       </ul>
     <% end %>
   </div>
 </nav>
+
 
 <% if current_user %>
 <h1 style="margin: 50px auto 40px; text-align:center;">Welcome to Pinteresting, <%= current_user.username %>.</h1>
@@ -34,14 +38,21 @@
 <h1 style="margin: 50px auto 40px; text-align:center;">Welcome to Pinteresting</h1>
 <% end %>
 
-<div class="search-form" style="text-align:center; margin-bottom:10px;">
-  <%= form_tag pins_path, method: :get do %>
+<center>
+  <%= link_to "Search", "#", id: "search-link" %>
+</center>
+
+<section id="search-section">
+  <div id="search">
+    <%= form_tag pins_path, method: :get do %>
     <p>
-      <%= text_field_tag :query, params[:query], placeholder: "Look for a place" %>
-      <%= submit_tag "Search", title: nil, description: nil %>
-    </p>
-  <% end %>
-</div>
+      <center><%= text_field_tag :query, params[:query], placeholder: "Look for a place" %>
+        <%= submit_tag "Search", title: nil, description: nil %></center>
+      </p>
+      <% end %><br>
+  </div>
+</section>
+
 
 <div class="row">
   <div class="col-md-12">

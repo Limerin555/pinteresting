@@ -8,18 +8,94 @@
   margin-bottom: 1%;
 }
 
-#logbox {
-    font-family: 'Montserrat', sans-serif;
+#signup-box {
     margin-top: 10%;
-    padding: 5% 3% 5% 3%;
+    margin-bottom: 60px;
+    padding: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
-    height: 400px;
+    width: 40%;
+    height: 100%;
     background-color: #fff;
     -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     text-align: center;
-    opacity: 0.9;
+}
+
+#signin-box {
+    margin-top: 15%;
+    margin-bottom: 60px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    height: 100%;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+.input {
+    font-family: 'Montserrat', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    text-align: center;
+    width: 65%;
+    height: 50px;
+    display: block;
+    // margin: 0 auto 30px;
+    padding: 0 15px;
+    border: none;
+}
+
+.input:focus {
+    outline: none;
+    border-bottom-color: #BD1E23 !important;
+}
+.input:hover {
+    border-bottom-color: #dcdcdc;
+}
+.input:invalid {
+    box-shadow: none;
+}
+
+.pass:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+.pass:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+.inputButton {
+  margin-top: 10px;
+  position: relative;
+  width: 30%;
+  height: 50px;
+  display: block;
+  margin: 55px auto 30px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #BD1E23;
+  border: none;
+  -webkit-box-shadow: 0 5px 0 #741417;
+  -moz-box-shadow: 0 5px 0 #741417;
+  box-shadow: 0 5px 0 #741417;
+}
+.inputButton:hover {
+  top: 2px;
+  -webkit-box-shadow: 0 3px 0 #741417;
+  -moz-box-shadow: 0 3px 0 #741417;
+  box-shadow: 0 3px 0 #741417;
+}
+.inputButton:active {
+  top: 5px;
+  box-shadow: none;
+}
+.inputButton:focus {
+  outline: none;
 }

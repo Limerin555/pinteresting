@@ -4,8 +4,10 @@ class PinsController < ApplicationController
 
   def index
     if params[:query].present?
+      @pin = Pin.new
       @pins = Pin.search_full_text(params[:query]).order("created_at DESC")
     else
+      @pin = Pin.new
       @pins = Pin.all.order("created_at DESC")
     end
   end
@@ -18,12 +20,20 @@ class PinsController < ApplicationController
     @pin = Pin.new(pin_params)
     @pin.user_id = current_user.id
 
-    if @pin.save
-      redirect_to @pin, notice: "Pin posted"
-    else
-      render "new"
+    respond_to do |format|
+      if @pin.save
+        format.html { redirect_to @pin, notice: 'Pin posted.' }
+        format.json { render :show, status: :created, location: @pin }
+        format.js
+      else
+        format.html { render :new }
+        format.json { render json: @pin.errors, status: :unprocessable_entity }
+        format.js
+      end
     end
   end
+
+
 
   def show
   end
