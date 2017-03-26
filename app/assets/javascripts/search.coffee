@@ -1,3 +1,3 @@
-$(document).on "page:change", ->
-  $('#search-link').click ->
-    alert "Clicked!"
+# $(document).on('click', '#search-link', ( ->
+#   $("#search-section").toggle(1000);
+# ));
