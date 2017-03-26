@@ -38,9 +38,9 @@
 <h1 style="margin: 50px auto 40px; text-align:center;">Welcome to Pinteresting</h1>
 <% end %>
 
-<!-- <center>
-  <%= link_to "Search", "#", id: "search-link" %>
-</center> -->
+<center>
+  <%= link_to "Search", "#", id: "search-link", remote: true %>
+</center>
 
 <section id="search-section">
   <div id="search">
@@ -58,9 +58,9 @@
   <div class="col-md-12">
     <div class="transistions-enabled" id="pins" style="margin-left: 60px; margin-right: 60px;">
       <% @pins.each do |pin| %>
-      <div class="box panel panel-default" style="width:600px; height:100%; margin-left:5px; margin-right:5px;">
+      <div class="box panel panel-default" id="<%= pin.id %>" style="width:600px; height:100%; margin-left:5px; margin-right:5px;">
         <%= link_to (image_tag pin.photo), pin %>
-        <div class="panel-body">
+        <div class="panel-body" >
           <h2>
             <%= link_to pin.title, pin %>
           </h2>
@@ -68,8 +68,31 @@
           Submitted by:
           <%= pin.user.username %>
         </div>
+        <% unless session[:user_id].nil? %>
+          <% if pin.user_id == current_user.id %>
+            <div class="panel-footer">
+              <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                  <div class="btn-group pull-right">
+                    <div class="destroy">
+                      <%= link_to "Delete", "#" , class: "btn btn-default" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
       <% end %>
     </div>
   </div>
 </div>
+
+<script>
+$(document).on("click", "#search-link", function(){
+  $("#search-section").toggle(700);
+});
+</script>
