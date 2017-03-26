@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323162905) do
+ActiveRecord::Schema.define(version: 20170325160012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentications", force: :cascade do |t|
+    t.string   "uid"
+    t.string   "token"
+    t.string   "provider"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
+  end
 
   create_table "donations", force: :cascade do |t|
     t.integer  "amount"
@@ -46,4 +56,5 @@ ActiveRecord::Schema.define(version: 20170323162905) do
     t.datetime "updated_at",    null: false
   end
 
+  add_foreign_key "authentications", "users"
 end

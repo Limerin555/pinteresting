@@ -359,7 +359,7 @@ DEPENDENCIES
   masonry-rails (~> 0.2.4)
   mini_magick
   omniauth (~> 1.6, >= 1.6.1)
-  omniauth-facebook
+  omniauth-facebook (~> 4.0)
   pg (~> 0.18)
   pg_search
   puma (~> 3.0)

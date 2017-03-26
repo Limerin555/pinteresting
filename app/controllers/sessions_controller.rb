@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    redirect_to '/auth/facebook'
   end
 
   def create
@@ -13,27 +14,26 @@ class SessionsController < ApplicationController
     end
   end
 
-  # def create_from_omniauth
-  #   auth = request.env["omniauth.auth"]
-  #   session[:omniauth] = auth.except('extra')
-  #   @fb_user = User.sign_in_from_omniauth(auth)
-  #   session[:user_id] = @fb_user.id
-  #   redirect_to user_path(@fb_user), notice: "Signed in"
-  #   else
-  #     notice: "Sign in unsuccessful, try again."
-  #   end
-  # end
-
-  # add_column :users, :provider, :string
-  #
-  # add_column :users, :uid, :string
-  #
-  # add_column :users, :name, :string
+  def create_from_omniauth
+    auth_hash = request.env["omniauth.auth"]
+    authentication = Authentication.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"]) || Authentication.create_with_omniauth(auth_hash)
+    if authentication.user
+      @user = authentication.user
+      authentication.update_token(auth_hash)
+      session[:user_id] = @user.id
+      redirect_to user_path(@user), notice: "Signed in"
+    else
+      @user = User.create_with_auth_and_hash(authentication, auth_hash)
+      # session[:user_id] = @user.id
+      redirect_to user_path(@user), notice: "User Profile created"
+    # else
+      # redirect_to root_path, notice: "Something went wrong, please try again."
+    end
+  end
 
 
   def destroy
     session[:user_id] = nil
-    # session[:omniauth] = nil
     redirect_to root_path, notice: "Successfully signed out"
   end
 end
