@@ -29,6 +29,10 @@
           <%= @pin.user.username %>
         </p>
         <% unless session[:user_id].nil? %>
+          <% if @pin.user_id == current_user.id %>
+            <%= link_to "Edit", edit_pin_path, class: "btn btn-default" %>
+            <%= link_to "Delete", pin_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
+          <% end %>
           <% unless @pin.user_id == current_user.id %>
           <br>
           <p>

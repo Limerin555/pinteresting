@@ -1,4 +1,4 @@
-<%= form_for @pin do |f| %>
+<%= form_for @pin, url: pin_path(@pin), method: :patch do |f| %>
   <p>
     <%= image_tag (@pin.photo.url) if @pin.photo? %>
     <%= f.label "Photo" %><br>

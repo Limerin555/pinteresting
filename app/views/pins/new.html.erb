@@ -13,4 +13,24 @@
 
 <h1>Create New Pins</h1>
 
-<%= render 'form' %>
+<%= form_for @pin, url: pins_path do |f| %>
+  <p>
+    <%= image_tag (@pin.photo.url) if @pin.photo? %>
+    <%= f.label "Photo" %><br>
+    <%= f.file_field :photo %>
+  </p>
+
+  <p>
+    <%= f.label "Title :" %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label "Description :" %><br>
+    <%= f.text_field :description %>
+  </p>
+
+  <p>
+    <%= f.submit "Enter" %>
+  </p>
+<% end %>
